@@ -1,0 +1,16 @@
+*
+{
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.fa-icon-1x
+{
+  font-size: 1rem;
+}
+
+.fa-icon-2x
+{
+  font-size: 1.5rem;
+}
