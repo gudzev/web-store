@@ -5,10 +5,19 @@ import { faBars, faMagnifyingGlass, faCartShopping, faHouse, faSuitcase, faPhone
 
 import { Link } from "react-router-dom";
 
-export function Header()
+export function Header({searchText, setSearchText})
 {
-    return <header>
+    const searchProducts = () =>
+    {
+        console.log(searchText);
+    }
 
+    const handleTextInput = (event) =>
+    {
+        setSearchText(event.target.value)
+    }
+
+    return <header>
         <div className="header-main">
             <Link className="header-img-wrapper" to="/">
                 <img src="/logo.png" className="header-img" alt="Prodavnica logo"/>
@@ -19,8 +28,8 @@ export function Header()
             </button>
 
             <div className="header-search-container">
-                <input type="text" className="header-search" placeholder="Pronađite proizvod"/>
-                <button className="header-search-btn">
+                <input type="text" className="header-search" placeholder="Pronađite proizvod" onChange={handleTextInput} />
+                <button className="header-search-btn" onClick={searchProducts}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} className="fa-icon-1x" />
                 </button>
             </div>

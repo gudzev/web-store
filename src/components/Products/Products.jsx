@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 import axios from "axios";
 
-export function Products()
+export function Products({searchText})
 {
     const [products, setProducts] = useState([]);
 
@@ -25,7 +25,7 @@ export function Products()
         return;
     }
 
-    console.log(products);
+    console.log(searchText)
 
     return (
         <section className="products">
@@ -33,7 +33,10 @@ export function Products()
             {
                 products?.map((product) =>
                 {
-                    return <Product image_url={product.image_url} name={product.name} price_rsd={product.price_rsd} id={product.id} key={product.id}/>
+                    if(product.name.toLowerCase().includes(searchText))
+                    {
+                        return <Product image_url={product.image_url} name={product.name} price_rsd={product.price_rsd} id={product.id} key={product.id}/>
+                    }
                 })
             }
             </div>

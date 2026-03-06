@@ -386,6 +386,7 @@ header
     .header-links .ul-links
     {
         overflow-x: auto;
+        overflow-y: hidden;
         display: flex;
         justify-content: flex-start;
         align-items: center;
