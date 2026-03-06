@@ -1,0 +1,40 @@
+.cart
+{
+    display: flex;
+    justify-content: center;
+    background-color: var(--bg-color);
+    height: 100%;
+}
+
+.cart-content
+{
+    width: 1280px;
+    padding: 20px;
+}
+
+.cart-header
+{
+    font-size: 1.5rem;
+    text-align: center;
+}
+
+.cart-flex-container
+{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.cart-preview
+{
+    width: 75%;
+    height: auto
+}
+
+.cart-checkout
+{
+    width: 25%;
+    height: 400px;
+}

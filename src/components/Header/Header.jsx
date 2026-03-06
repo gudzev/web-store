@@ -4,17 +4,33 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faMagnifyingGlass, faCartShopping, faHouse, faSuitcase, faPhoneVolume, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
-export function Header({searchText, setSearchText})
+export function Header({setSearchText, cart})
 {
-    const searchProducts = () =>
+    const [inputText, setInputText] = useState("");
+
+    const searchProducts = (inputText) =>
     {
-        console.log(searchText);
+        setSearchText(inputText);
     }
 
-    const handleTextInput = (event) =>
+    const listenForEnterKeyPress = (event) =>
     {
-        setSearchText(event.target.value)
+        if(event.key == "Enter")
+        {
+            searchProducts(event.target.value);
+        }
+    }
+
+    const calculateCartItemNumber = () =>
+    {
+        let num = 0;
+        cart?.forEach((item) =>
+        {
+            num += item.quantity;
+        });
+        return num;
     }
 
     return <header>
@@ -28,8 +44,8 @@ export function Header({searchText, setSearchText})
             </button>
 
             <div className="header-search-container">
-                <input type="text" className="header-search" placeholder="Pronađite proizvod" onChange={handleTextInput} />
-                <button className="header-search-btn" onClick={searchProducts}>
+                <input type="text" className="header-search" placeholder="Pronađite proizvod" onChange={(event) => setInputText(event.target.value)} onKeyDown={listenForEnterKeyPress} />
+                <button className="header-search-btn" onClick={() => searchProducts(inputText)}>
                     <FontAwesomeIcon icon={faMagnifyingGlass} className="fa-icon-1x" />
                 </button>
             </div>
@@ -44,7 +60,7 @@ export function Header({searchText, setSearchText})
                     <FontAwesomeIcon icon={faCartShopping} className="fa-icon-2x" />
                     Korpa
                     
-                    <span className="cart-counter">0</span>
+                    <span className="cart-counter">{calculateCartItemNumber()}</span>
                 </Link>
             </div>
         </div>

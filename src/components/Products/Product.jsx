@@ -3,25 +3,47 @@ import "./Products.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faCheck } from "@fortawesome/free-solid-svg-icons";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 let timeoutList = [];
 
-export function Product({image_url, name, price_rsd, id})
+export function Product({image_url, name, price_rsd, id, cart, setCart})
 {
     const [isAddedToCart, setIsAddedToCart] = useState(false);
+    const quantitySelect = useRef(1);
 
     const addToCart = (productId) =>
     {
-        console.log(productId);
-        displayAddedToCartText();
+        const quantity = Number(quantitySelect.current.value);
+        const newCart = [...cart];
+
+        const existingItem = newCart.find((cartItem) => cartItem.productId == productId);
+        if(!existingItem)
+        {
+            newCart.push(
+                {
+                    productId: productId,
+                    quantity: quantity
+                }
+            )
+        }
+        else
+        {
+            existingItem.quantity += quantity;
+        }
+
+        setCart(newCart);
+        displayAddedToCartText(productId);
     }
 
-    const displayAddedToCartText = () =>
+    const displayAddedToCartText = (productId) =>
     {
-        timeoutList.forEach((timeout) =>
+        timeoutList.forEach((productTimeOut) =>
         {
-            clearTimeout(timeout);
+            if(productId == productTimeOut.productId)
+            {
+                clearTimeout(productTimeOut.timeout);
+            }
         })
 
         setIsAddedToCart(true);
@@ -29,7 +51,10 @@ export function Product({image_url, name, price_rsd, id})
         {
             setIsAddedToCart(false);
         }, 2500);
-        timeoutList.push(timeout);
+        timeoutList.push({
+            timeout: timeout,
+            productId: productId
+        });
     }
 
     return <div className="product">
@@ -40,7 +65,7 @@ export function Product({image_url, name, price_rsd, id})
                 <div className="product-details">
                     <div className="product-quantity">
                         <span className="product-qty-text">Quantity: </span>
-                        <select className="product-qty-select">
+                        <select className="product-qty-select" ref={quantitySelect}>
                             <option value="1">1</option>
                             <option value="2">2</option>
                             <option value="3">3</option>

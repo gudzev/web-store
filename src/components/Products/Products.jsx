@@ -5,7 +5,7 @@ import { useState, useEffect } from "react";
 
 import axios from "axios";
 
-export function Products({searchText})
+export function Products({searchText, cart, setCart})
 {
     const [products, setProducts] = useState([]);
 
@@ -19,14 +19,6 @@ export function Products({searchText})
         getProducts();
     }, []);
 
-    if(!products)
-    {
-        console.log("productsArray is empty.");
-        return;
-    }
-
-    console.log(searchText)
-
     return (
         <section className="products">
             <div className="products-grid">
@@ -35,7 +27,7 @@ export function Products({searchText})
                 {
                     if(product.name.toLowerCase().includes(searchText))
                     {
-                        return <Product image_url={product.image_url} name={product.name} price_rsd={product.price_rsd} id={product.id} key={product.id}/>
+                        return <Product image_url={product.image_url} name={product.name} price_rsd={product.price_rsd} id={product.id} key={product.id} cart={cart} setCart={setCart}/>
                     }
                 })
             }

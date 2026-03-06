@@ -4,15 +4,11 @@ import { Header } from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
 import { Products } from "../../components/Products/Products";
 
-import { useState } from "react";
-
-export function Home()
+export function Home({cart, setCart, setSearchText, searchText})
 {
-    const [searchText, setSearchText] = useState("");
-
     return <>
-        <Header searchText={searchText} setSearchText={setSearchText}/>
-        <Products searchText={searchText}/>
+        <Header setSearchText={setSearchText} cart={cart}/>
+        <Products searchText={searchText} cart={cart} setCart={setCart}/>
         <Footer />
     </>
 }
