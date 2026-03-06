@@ -3,14 +3,16 @@ import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faMagnifyingGlass, faCartShopping, faHouse, faSuitcase, faPhoneVolume, faHeart } from "@fortawesome/free-solid-svg-icons";
 
+import { Link } from "react-router-dom";
+
 export function Header()
 {
     return <header>
 
         <div className="header-main">
-            <a className="header-img-wrapper" href="#">
+            <Link className="header-img-wrapper" to="/">
                 <img src="/logo.png" className="header-img" alt="Prodavnica logo"/>
-            </a>
+            </Link>
 
             <button className="header-categories">
                 <FontAwesomeIcon icon={faBars} className="fa-icon-2x fa-textirght" /> Sve kategorije
@@ -29,19 +31,19 @@ export function Header()
                     Lista zelja
                 </button>
 
-                <button className="header-cart">
+                <Link className="header-cart" to="/cart">
                     <FontAwesomeIcon icon={faCartShopping} className="fa-icon-2x" />
                     Korpa
                     
                     <span className="cart-counter">0</span>
-                </button>
+                </Link>
             </div>
         </div>
 
         <div className="header-links">
             <div className="header-pages">
                 <ul className="ul-links">
-                    <li><a href="#"><FontAwesomeIcon icon={faHouse} className="fa-icon-1x" /></a></li>
+                    <li><Link to="/"><FontAwesomeIcon icon={faHouse} className="fa-icon-1x" /></Link></li>
                     <li><a href="#">Grafičke karte</a></li>
                     <li><a href="#">Procesori</a></li>
                     <li><a href="#">Matične ploče</a></li>

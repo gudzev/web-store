@@ -161,6 +161,7 @@ header
     color: var(--text-color);
     margin: 0 10px;
     cursor: pointer;
+    text-decoration: none;
 
     display: flex;
     justify-content: center;
@@ -192,15 +193,31 @@ header
 /* Tablets */
 @media screen and ((max-width: 1279px) and (min-width: 769px)) 
 {
+    header
+    {
+        width: 100vw;
+        max-width: 100vw;
+        height: 144px;
+    }
+
     .header-img
     {
-        width: 150px;
+        width: 200px;
         height: 60px;
     }
 
     .header-main
     {
-        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-wrap: wrap;
+        flex-grow: 1;
+        background-color: var(--page-header-bg);
+        width: 100vw;
+        gap: 10px;
+        padding: 10px;
+        justify-content: center;
     }
 
     .header-main > *
@@ -220,58 +237,98 @@ header
     .header-pages
     {
         width: 100%;
-        justify-content: center;
+        display: flex;
+        justify-content: flex-start;
     }
 
-    .header-links .ul-links, .ul-contact
-    {
-        height: 100%;
-    }
-    .ul-contact > *
-    {
-        margin: 0px 3px;
-    }
-
-    .ul-contact li a
-    {
-        padding: 5px 2px;
-        text-align: center;
-    }
-
-    .ul-contact li
-    {
-        text-align: center;
-    }
-
-    .ul-links
+    .header-links .ul-links
     {
         overflow-x: auto;
-        max-width: 64vw;
-        flex-shrink: 1;
+        overflow-y: hidden;
+        display: flex;
         justify-content: flex-start;
+        align-items: center;
+        list-style: none;
+        height: 100%;
+    }
+
+    .ul-contact
+    {
+        display: none;
+    }
+
+    .ul-links li
+    {
+        border-right: 1px solid var(--header-links-bg-border);
     }
 
     .header-pages .ul-links li a
     {
-        padding: 5px 7px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-decoration: none;
+        color: var(--text-color);
+        border-right: none;
+        padding: 8px 18px;
+        text-align: center;
     }
 
-    .header-categories
+    .header-pages .ul-links li:hover
     {
-        height: 45px;
-        width: 140px;
+        border-bottom: 1px solid var(--accent-color);
+    }
+
+    .fa-textright
+    {
+        margin-right: 10px;
+    }
+
+    .header-search-container
+    {
+        overflow: hidden;
+        display: flex;
+        border-radius: 30px;
+        width: 100%;
     }
 
     .header-search-btn
     {
         width: 50px;
         height: 45px;
+        background-color: var(--accent-color);
+        border: none;
+        outline: none;
+        cursor: pointer;
     }
 
     .header-search
     {
-        width: 300px;
-        padding: 5px;
+        width: 100%;
+        height: 45px;
+        padding: 10px;
+        outline: none;
+        border: none;
+    }
+
+    .header-img-wrapper
+    {
+        order: 1;
+    }
+
+    .header-additional
+    {
+        order: 3;
+    }
+
+    .header-search-container
+    {
+        order: 4;
+    }
+
+    .header-categories
+    {
+        order: 2;
     }
 }
 
@@ -287,8 +344,8 @@ header
 
     .header-img
     {
-        width: 150px;
-        height: 50px;
+        width: 200px;
+        height: 60px;
     }
 
     .header-main
@@ -296,9 +353,13 @@ header
         display: flex;
         justify-content: flex-start;
         align-items: center;
+        flex-wrap: wrap;
         flex-grow: 1;
         background-color: var(--page-header-bg);
         width: 100vw;
+        gap: 10px;
+        padding: 10px;
+        justify-content: center;
     }
 
     .header-main > *
@@ -332,7 +393,7 @@ header
         height: 100%;
     }
 
-    .ul-contact, .header-categories, .header-additional
+    .ul-contact, .header-categories, .header-wishlist
     {
         display: none;
     }
@@ -350,7 +411,7 @@ header
         text-decoration: none;
         color: var(--text-color);
         border-right: none;
-        padding: 10px 20px;
+        padding: 8px 18px;
         text-align: center;
     }
 
@@ -369,7 +430,7 @@ header
         overflow: hidden;
         display: flex;
         border-radius: 30px;
-        width: 300px;
+        width: 100%;
     }
 
     .header-search-btn
@@ -384,10 +445,25 @@ header
 
     .header-search
     {
-        width: 200px;
+        width: 100%;
         height: 45px;
         padding: 10px;
         outline: none;
         border: none;
+    }
+
+    .header-img-wrapper
+    {
+        order: 1;
+    }
+
+    .header-additional
+    {
+        order: 2;
+    }
+
+    .header-search-container
+    {
+        order: 3;
     }
 }

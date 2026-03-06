@@ -1,0 +1,23 @@
+.not-found
+{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    min-height: calc(100vh - 634px);
+}
+
+.not-found-content
+{
+    width: 1280px;
+}
+
+.not-found-content
+{
+    text-align: center;
+}
+
+.not-found-content > *
+{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}

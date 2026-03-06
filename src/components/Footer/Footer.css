@@ -163,6 +163,11 @@ footer
     {
         display: none;
     }
+
+    .footer-img-wrapper
+    {
+        order: 0;
+    }
 }
 
 /* Phones */
@@ -207,5 +212,10 @@ footer
     .footer-image
     {
         display: none;
+    }
+
+    .footer-img-wrapper
+    {
+        order: 0;
     }
 }

@@ -4,14 +4,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFacebook, faLinkedin, faInstagram, faYoutube } from "@fortawesome/free-brands-svg-icons";
 import { faPhone, faEnvelope } from "@fortawesome/free-solid-svg-icons";
 
+import { Link } from "react-router-dom";
+
 export function Footer()
 {
     return <footer>
         <div className="footer-content">
             <div className="footer-info">
-                <a className="header-img-wrapper" href="#">
+                <Link className="header-img-wrapper footer-img-wrapper" to="/">
                     <img src="/logo.png" className="header-img" alt="Prodavnica logo"/>
-                </a>
+                </Link>
 
                 <div className="working-time">
                     <p>Radno vreme kontakt centra</p>

@@ -3,11 +3,33 @@ import "./Products.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShoppingCart, faCheck } from "@fortawesome/free-solid-svg-icons";
 
+import { useState } from "react";
+
+let timeoutList = [];
+
 export function Product({image_url, name, price_rsd, id})
 {
+    const [isAddedToCart, setIsAddedToCart] = useState(false);
+
     const addToCart = (productId) =>
     {
-        console.log(productId)
+        console.log(productId);
+        displayAddedToCartText();
+    }
+
+    const displayAddedToCartText = () =>
+    {
+        timeoutList.forEach((timeout) =>
+        {
+            clearTimeout(timeout);
+        })
+
+        setIsAddedToCart(true);
+        const timeout = setTimeout(() =>
+        {
+            setIsAddedToCart(false);
+        }, 2500);
+        timeoutList.push(timeout);
     }
 
     return <div className="product">
@@ -30,17 +52,13 @@ export function Product({image_url, name, price_rsd, id})
                             <option value="9">9</option>
                             <option value="10">10</option>
                         </select>
-                        </div>
+                    </div>
                     <span className="product-price">Price: {price_rsd} RSD</span>
                 </div>
 
                 <button className="add-to-cart-btn" onClick={() => { addToCart(id)}}>
                     <FontAwesomeIcon icon={faShoppingCart} />Add To Cart
                 </button>
-
-                {
-                    // /* Menjaj visibility: hidden */ 
-                }
-                <span className="cart-added"><FontAwesomeIcon icon={faCheck} />Added</span>
+                <span className={isAddedToCart ? `cart-added active` : `cart-added`}><FontAwesomeIcon icon={faCheck} />Added</span>
     </div>
 }
