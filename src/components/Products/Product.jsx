@@ -5,6 +5,8 @@ import { faShoppingCart, faCheck } from "@fortawesome/free-solid-svg-icons";
 
 import { useState, useRef } from "react";
 
+import { formatPrice } from "../../utils/formatPrice";
+
 let timeoutList = [];
 
 export function Product({image_url, name, price_rsd, id, cart, setCart})
@@ -64,7 +66,7 @@ export function Product({image_url, name, price_rsd, id, cart, setCart})
 
                 <div className="product-details">
                     <div className="product-quantity">
-                        <span className="product-qty-text">Quantity: </span>
+                        <span className="product-qty-text">Količina: </span>
                         <select className="product-qty-select" ref={quantitySelect}>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -78,11 +80,11 @@ export function Product({image_url, name, price_rsd, id, cart, setCart})
                             <option value="10">10</option>
                         </select>
                     </div>
-                    <span className="product-price">Price: {price_rsd} RSD</span>
+                    <span className="product-price">Cena: {formatPrice(price_rsd)} RSD</span>
                 </div>
 
                 <button className="add-to-cart-btn" onClick={() => { addToCart(id)}}>
-                    <FontAwesomeIcon icon={faShoppingCart} />Add To Cart
+                    <FontAwesomeIcon icon={faShoppingCart} />Dodaj u korpu
                 </button>
                 <span className={isAddedToCart ? `cart-added active` : `cart-added`}><FontAwesomeIcon icon={faCheck} />Added</span>
     </div>

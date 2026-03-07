@@ -3,16 +3,22 @@ import "./Header.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faMagnifyingGlass, faCartShopping, faHouse, faSuitcase, faPhoneVolume, faHeart } from "@fortawesome/free-solid-svg-icons";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 
 export function Header({setSearchText, cart})
 {
     const [inputText, setInputText] = useState("");
+    const navigate = useNavigate();
 
     const searchProducts = (inputText) =>
     {
         setSearchText(inputText);
+
+        if(window.location.pathname == "/cart")
+        {
+            navigate("/");
+        }
     }
 
     const listenForEnterKeyPress = (event) =>

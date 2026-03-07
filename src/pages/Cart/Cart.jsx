@@ -3,6 +3,8 @@ import "./Cart.css";
 import { Header } from "../../components/Header/Header";
 import { Footer } from "../../components/Footer/Footer";
 import { CartItem } from "./CartItem";
+import { CartCheckout } from "./CartCheckout";
+import { CartPreview } from "./CartPreview";
 
 import { useState, useEffect } from "react";
 
@@ -36,8 +38,6 @@ export function Cart({setSearchText, cart})
         getCartProducts();
     }, [cart]);
 
-    console.log(cartProducts);
-
     return <>
         <Header setSearchText={setSearchText} cart={cart}/>
 
@@ -47,18 +47,8 @@ export function Cart({setSearchText, cart})
                 <h1 className="cart-header">Korpa</h1>
 
                 <div className="cart-flex-container">
-                    <div className="cart-preview">
-                        {
-                            cartProducts?.map((cartItem) =>
-                            {
-                                return <CartItem key={cartItem.cartProduct.id} cartItem={cartItem} />
-                            })
-                        }
-                    </div>
-
-                    <div className="cart-checkout">
-
-                    </div>
+                    <CartPreview cartProducts={cartProducts}/>
+                    <CartCheckout />
                 </div>
 
             </div>
